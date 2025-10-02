@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+.header {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    z-index: 110;
+    border-bottom:1px solid #325DE7;
+    background-color: #fff;
+
+    &__wrap {
+        height: 168px;
+    }
+    &__inner {
+        height: 112px;
+        border-bottom:1px solid #CDD1D5;
+    }
+    &__utill {
+        display: flex;
+        justify-content: space-between;
+        width: 1200px;
+        margin:0 auto;
+    }
+    &__logo {
+        margin-top:51px;
+        font-size:0;
+    }
+    &__utillList {
+        display: flex;
+        flex-direction: row-reverse;
+        gap:8px;
+        margin-top:52px;
+
+        li {
+            position: relative;
+        }
+
+        .button {
+            display: inline-block;
+            height:40px;
+            padding-left:40px;
+            color: #1D1D1D;
+            font-size:17px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .alarm {
+            min-width:82px;
+            background: url('@images/common/bullet/bul_alarm01.svg') no-repeat 10px 11px/20px;
+
+        }
+        .mypage {
+            min-width:126px;
+            background: url('@images/common/bullet/bul_mypage01.svg') no-repeat 11px 10px/19px;
+        }
+    }
+
+    &__alarmCount {
+        position: absolute;
+        top:-10px;
+        left:24px;
+        padding:0 9px;
+        border-radius: 50%;
+        background-color: #325EE6;
+        color:#fff;
+        font-size:15px;
+    }
+
+    &__nav {
+        position: relative;
+        display: flex;
+        width: 1200px;
+        height: 56px;
+        margin:0 auto;
+        gap:16px;
+    }
+    &__gnbButton {
+        display: block;
+        width: 197px;
+        height: 56px;
+        padding-left:16px;
+        background: url('@images/common/bullet/bul_arrow02.svg') no-repeat right 16px top 50%;
+        color:#555;
+        font-size:19px;
+        font-weight: 700;
+        text-align: left;
+
+        &.active {
+            background-image: url('@images/common/bullet/bul_arrow03.svg');
+            color:#325EE6;
+        }
+    }
+
+    &__gnb {
+        display: none;
+        gap:64px;
+        position: absolute;
+        left:0;
+        width: 1200px;
+        padding:32px;
+        border-radius: 12px;
+        box-shadow: 1px 2.8px 15px 0 rgba(0,0,0,0.05);
+        background-color: #fff;
+        z-index: 100;
+
+        &.active {
+            display: flex;
+        }
+    }
+    &__gnbDescription {
+        min-width: 272px;
+        
+        dt {
+            color:#325EE6;
+            font-size:24px;
+            font-weight: 700;
+        }
+        dd {
+            margin-top:16px;
+            font-size:21px;
+        }
+    }
+    &__gnbList {
+        display: flex;
+        flex-wrap: wrap;
+        gap:20px 32px;
+    }
+    &__gnbItem {
+        
+    }
+    &__gnbLink {
+        display: block;
+        width: 384px;
+        height: 120px;
+        padding:20px;
+        border:1px solid #C6C6C6;
+        border-radius: 12px;
+        background:#fff url('@images/common/bullet/bul_gnb_off.png') no-repeat right 20px top 20px;
+
+        &:focus,
+        &:hover {
+            border-color: #325EE6;
+            background-color: #325EE61a;
+            background-image:url('@images/common/bullet/bul_gnb_on.png');
+        }
+    }
+    &__gnbTitle {
+        font-size:17px;
+        font-weight: 700;
+    }
+    &__gnbText {
+        margin-top:8px;
+        color:#717171;
+        font-size:15px;
+        line-height: 150%;
+    }
+}

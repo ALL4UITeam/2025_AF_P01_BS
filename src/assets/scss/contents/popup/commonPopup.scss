@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+
+.commonDialog {
+
+  &__header {
+    display: flex;
+    color: #1d1d1d;
+    font-size:24px;
+    font-weight: 700;
+  }
+
+  &__content {
+    padding:48px 24px 24px;
+  }
+
+  &__linkBox {
+    display: flex;
+    margin-top:16px;
+    gap:8px;
+  }
+  &__link {
+    flex:1;
+    height: 245px;
+    padding:38px 40px 0 96px;
+    border-radius: 12px;
+    background: #F4F5F6;
+
+    &:first-child {
+        background:#F4F5F6 url('@images/common/icon/icon_modal01.svg') no-repeat 32px 32px;
+    }
+    &:nth-child(2) {
+        background:#F4F5F6 url('@images/common/icon/icon_modal02.svg') no-repeat 32px 32px;
+    }
+    &:last-child {
+        background:#F4F5F6 url('@images/common/icon/icon_modal03.svg') no-repeat 32px 32px;
+    }
+  }
+  &__linkTitle {
+        background: url('@images/common/bullet/bul_shortcut.svg') no-repeat right 0;
+    color: #1d1d1d;
+    font-size:19px;
+    font-weight: 700;
+    
+  }
+  &__linkText {
+    margin-top:8px;
+    color: #464C53;
+    font-size:17px;
+    word-break: break-all;
+  }
+  &__close {
+    position: absolute;
+    right:30px;
+    top:30px;
+    color:#1d1d1d;
+  }
+}

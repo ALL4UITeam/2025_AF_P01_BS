@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+.footer {
+    background-color: #333A46;
+
+    &__innerBox {
+        width:1200px;
+        height: 220px;
+        margin:0 auto;
+    }
+
+    &__logo {
+        display: flex;
+        padding-top:40px;
+        gap:40px;
+        font-size:0;
+    }
+    &__address {
+        margin-top:40px;
+        color:#A6ADBD;
+        font-size:17px;
+    }
+    &__other {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top:16px;
+    }
+    &__numberBox {
+        color:#A6ADBD;
+        font-size:17px;
+    }
+    &__numberTitle {
+        color:#fff;
+        font-size:17px;
+        font-weight: 700;
+    }
+    &__number {
+        display: inline-block;
+        margin-left:8px;
+        padding-left:24px;
+        background: url('@images/common/bg_footertel.png') no-repeat 0 1px;
+        color:#fff;
+        font-size:15px;
+    }
+
+    &__copyText {
+        color:#A6ADBD;
+        font-size:15px;
+    }
+}

@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+// class=" p-component p-highlight"
+// .p-radiobutton .p-radiobutton-box .p-radiobutton-icon
+
+.p-radiobutton {
+
+    &::v-deep(.p-radiobutton-box){
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border:1px solid #1d1d1d;
+        background-color: #fff;
+        &.p-highlight {
+            border-color: #325EE6;
+        }
+    }
+    &.p-highlight {
+
+        &::v-deep(.p-radiobutton-box) {
+            background-color: #325EE6;
+            border-color: #325EE6;
+        }
+    }
+    & + label {
+        margin-left:8px;
+        font-size:17px;
+    }
+
+    &.small {
+        width:20px;
+        height: 20px;
+
+        &::v-deep(.p-radiobutton-box) {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &.xsmall {
+        width:16px;
+        height: 16px;
+
+        &::v-deep(.p-checkbox-box) {
+            width: 16px;
+            height: 16px;
+
+        }
+        &::v-deep(.p-radiobutton-icon) {
+            width: 10px;
+            height: 12px;
+        }
+
+        & + label {
+            margin-top:1px;
+            font-size:15px;
+        }
+    }
+
+}

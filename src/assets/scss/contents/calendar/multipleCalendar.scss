@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+:deep(.vc-container) {
+	width: 100%;
+    margin-top:32px;
+	border:none;
+
+	.vc-pane-layout {
+		display: flex;
+		justify-content: center;
+            background: url('@images/common/bg_calendar.png') no-repeat 50% 5px;
+	}
+	.vc-pane {
+		width: 384px;
+		+ .vc-pane {
+			
+				margin-left:177px;
+		}
+	}
+	.vc-header {
+		height: 56px;
+	}
+
+	.vc-weekday {
+        display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 44px;
+		height: 44px;
+	}
+	
+	.vc-arrow  {
+		width:32px;
+		height: 32px;
+		border:1px solid #CDD1D5;
+		border-radius: 50%;
+		color: #33363D;
+	}
+	.vc-title-wrapper {
+		font-size:19px;
+	}
+
+	.vc-day-content {
+		width: 44px;
+		height: 44px;
+		color: #1E2124;
+		font-size: 17px;
+		&.vc-disabled {
+			color: #8A949E;
+		}
+	}
+	.is-today {
+
+		.vc-day-content {
+			border-radius: 50%;
+			background-color: #063A74;
+			color: #fff;
+		}
+	}
+	.vc-highlight {
+		width: 5px;
+		height: 5px;
+		margin-top: 30px;
+	}
+}

@@ -1,0 +1,40 @@
+@charset "utf-8";
+@use "sass:color";
+
+// KRDS Heading Guide Styles
+.body-krds {
+	line-height: 150%;
+
+	&__large-bold {
+		font-size:19px;
+		font-weight: 700;
+	}
+	&__medium-bold {
+		font-size:17px;
+		font-weight: 700;
+	}
+	&__small-bold {
+		font-size:15px;
+		font-weight: 700;
+	}
+	&__xsmall-bold {
+		font-size:13px;
+		font-weight: 700;
+	}
+	&__large {
+		font-size:19px;
+		font-weight: 400;
+	}
+	&__medium {
+		font-size:17px;
+		font-weight: 400;
+	}
+	&__small {
+		font-size:15px;
+		font-weight: 400;
+	}
+	&__xsmall {
+		font-size:13px;
+		font-weight: 400;
+	}
+}

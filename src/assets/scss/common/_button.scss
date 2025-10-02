@@ -1,0 +1,112 @@
+@charset "utf-8";
+@use "sass:color";
+
+// KRDS Button Guide Styles
+
+// Button Size Variables
+$btn-size-xlarge : 64px;
+$btn-size-large : 56px;
+$btn-size-middle : 48px;
+$btn-size-small : 40px;
+$btn-size-xsmall : 32px;
+
+
+// Button Padding Variables
+$btn-padding-lg: 24px;
+$btn-padding-md: 16px;
+$btn-padding-sm: 12px;
+$btn-padding-xs: 8px;
+
+// Button Border Radius - radius2
+$btn-radius: 4px;
+
+// Button Base Style
+.button-krds {
+	height: 64px;
+	padding:0 24px;
+	border-radius: $btn-radius;
+
+	&.primary {
+		background-color: #325ee6;
+		color: #fff;
+		&:hover {
+			background-color: #0B50D0;
+		}
+		&:active {
+			background-color: #083891;
+		}
+	}
+	&.secondary {
+		background-color: #ECF2FE;
+		border:1px solid #325ee6;
+		color:#0B50D0;
+
+		&:hover {
+			background-color: #D8E5FD;
+		}
+		&:active {
+			background-color: #B1CEFB;
+		}
+	}
+	&.tertiary {
+		background-color: #fff;
+		border:1px solid #58616A;
+		color: #1E2124;
+
+		&:hover {
+			background-color: #F4F5F6;
+		}
+		&:active {
+			background-color: #E6E8EA;
+		}
+	}
+
+	&.xlarge {
+		height:$btn-size-xlarge;
+	}
+	&.large {
+		height:$btn-size-large;
+	}
+	&.middle {
+		height: $btn-size-middle;
+		padding:0 $btn-padding-md;
+	}
+	&.small {
+		padding: 0 $btn-padding-sm;
+		height: $btn-size-small;
+		font-size:15px;
+	}
+	&.xsmall {
+		padding:0 10px;
+		height: $btn-size-xsmall;
+		font-size:15px;
+	}
+
+	&:disabled {
+		border-color: #CDD1D5;
+		background-color: #CDD1D5;
+		color:#6D7882;
+	}
+}
+
+
+.clearButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    margin:0 10px;
+    background: #e1e4ea;
+    color:#333;
+
+    i {
+        width: auto;
+        height: auto;
+        font-size:17px;
+        font-weight: bold;
+        margin:1px 0 0 1px;
+    }
+}

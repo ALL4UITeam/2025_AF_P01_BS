@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+:deep(.p-calendar) {
+	width: 100%;
+    margin-top:32px;
+	
+	.p-datepicker {
+        
+				
+		.p-datepicker-header {
+            height: 56px;
+			
+			.p-datepicker-title {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: row-reverse;
+                color:#1E2124;
+				text-align: center;
+				font-weight: 700;
+				font-size: 19px;
+				
+				.p-datepicker-year {
+					&::after {
+						content: '년';
+						margin-left: 2px;
+					}
+				}
+			}
+			
+			.p-datepicker-prev,
+			.p-datepicker-next {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+                width:32px;
+                height: 32px;
+                border:1px solid #CDD1D5;
+                border-radius: 50%;
+                color: #33363D;
+				
+				&:hover {
+					background-color: rgba(255, 255, 255, 0.2);
+				}
+			}
+		}
+		
+		.p-datepicker-calendar {
+			background-color: white;
+			border-radius: 0 0 8px 8px;
+			
+			thead {
+				
+				th {
+					padding: 16px 0;
+					text-align: center;
+					color: #1E2124;
+                    font-size:15px;
+				}
+			}
+			
+			tbody {
+				td {
+					padding:0;
+					text-align: center;
+					border: none;
+                    & > span {
+                        width: 44px;
+                        height: 44px;
+                    }
+                    &.p-datepicker-today {
+                        span {
+                            background-color: #063A74;
+                            color: #fff;
+                        }
+                    }
+                    
+					.p-datepicker-day {
+						border-radius: 50%;
+						border: none;
+						background: transparent;
+						font-weight: 500;
+						cursor: pointer;
+						transition: all 0.2s ease;
+ 
+						&:hover {
+							background-color: #e3f2fd;
+							color: #1976d2;
+						}
+						
+
+						&.p-datepicker-selected {
+							background-color: #007bff;
+							color: white;
+							font-weight: 600;
+						}
+						
+						&.p-datepicker-other-month {
+							color: #adb5bd;
+						}
+					}
+				}
+			}
+		}
+
+        .p-monthpicker-month {
+            height: 50px;
+        }
+	}
+}

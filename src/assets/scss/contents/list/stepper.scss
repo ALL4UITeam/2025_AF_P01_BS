@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+
+    .stepperContainer{
+        display: flex;
+        flex-direction: column;
+        margin-top:24px;
+        padding:32px;
+
+        > li {
+            position: relative;
+            padding:32px 0 0 56px;
+
+            background: url('@images/common/bg_line02.png') repeat-y 20px 17px;
+
+            &:first-child {
+                padding-top:0;
+                .stepperContainer__number {top:0;}
+            }
+            &.line {
+                padding-bottom:32px;
+            }
+            &:last-child {
+                padding-top:0;
+                background: none;
+                .stepperContainer__number {top:0;}
+            }
+        }
+        &__header {
+            display: flex;
+            gap:8px;
+        }
+        &__number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top:32px;
+            left:8px;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: #325EE6;
+            color:#fff;
+            font-size:15px;
+            font-weight: 700;
+        }
+        &__title {
+            color: #325EE6;
+            font-size:17px;
+            font-weight: 700;
+
+            & + .stepperContainer__type {
+                display: inline-block;
+                padding-left:9px;
+                background: url('@images/common/bg_line.png') no-repeat 0 5px;
+            }
+        }
+        &__type {
+            font-size:17px;
+        }
+        &__content {
+            margin-top:16px;
+        }
+        &__text {
+            font-size:17px;
+        }
+        &__list {
+            > li {
+                margin-top:16px;
+                padding-left:32px;
+                background: url('@images/common/bullet/bul_dot02.svg') no-repeat 0 0;
+                color: #1D1D1D;
+                font-size:17px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+        }
+        &__related {
+            display: block;
+            color: #555;
+            font-size:17px;
+        }
+        &__tipBox {
+            margin:4px 0 0 -32px;
+            padding:16px 16px 16px 44px;
+            border-radius: 8px;
+            border:1px solid #C6C6C6;
+            background: #F8F8F8 url('@images/common/bullet/bul_tip01.svg') no-repeat 20px 17px;
+            font-size:17px;
+
+            &.type01 {
+                margin-top:16px;
+            }
+        }
+        &__tipBoxList {
+            margin-top:8px;
+            font-size:17px;
+        }
+        &__tipBoxText {
+            margin-top:8px;
+            font-size:17px;
+        }
+    }

@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+.downloadRequestDetails {
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top:40px;
+    }
+
+    &__totalAll {
+        display: flex;
+        align-items: center;
+    }
+
+    &__totalDownload {
+        display: inline-block;
+        height: 32px;
+        padding:0 10px 0 28px;
+        border-radius: 4px;
+        border:1px solid #1D1D1D;
+        background: url('@images/common/button/btn_download.svg') no-repeat 8px 11px;
+        color:#1D1D1D;
+        font-size:15px;
+    }
+
+
+    &__list {        
+        li {
+            margin-top:24px;
+            padding:32px;
+            border:1px solid #C6C6C6;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    &__selectBox {
+        display: flex;
+    }
+    &__type {
+        display: flex;
+        gap:8px;
+    }
+    &__delete {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url('@images/common/button/btn_delete01.svg') no-repeat 50%;
+    }
+    &__badge {
+        position: relative;
+        display: flex;
+        margin-left:24px;
+        padding-left:24px;
+        background: url('@images/common/bullet/bul_divider.svg') no-repeat 0 4px;
+        gap:4px;
+
+        &.type01 {
+            margin-left:8px;
+            padding:0;
+            background: none;
+        }
+    }
+    &__dateBox {
+        display: flex;
+        gap:8px;
+        font-size:15px;
+        font-weight: 700;
+    }
+    &__date {
+        font-size:15px;
+        font-weight: normal;
+    }
+    &__category {
+        margin-top:19px;
+        color:#1D1D1D;
+        font-weight: 700;
+        font-size: 19px;
+    }
+    &__update {
+        margin-top:16px;
+        color:#1D1D1D;
+        font-weight: 700;
+        font-size: 17px;
+    }
+    &__updateDate {
+        color: #1E2124;
+        font-size:17px;
+        font-weight: normal;
+    }
+    &__function {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top:19px;
+    }
+    &__more {
+        display: flex;
+        padding-left:24px;
+        background: url('@images/common/bullet/bul_arrow04.svg') no-repeat 0 7px;
+        color: #1E2124;
+        font-size:17px;
+    }
+    &__allDownload {
+        width: 72px;;
+        height: 32px;
+        border:1px solid #1D1D1D;
+        color: #1D1D1D;
+        font-size:15px;
+    }
+}

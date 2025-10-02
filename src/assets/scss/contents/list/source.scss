@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+.source {
+    display: flex;
+    justify-content: space-between;
+    margin-top:40px;
+
+    &__description {
+        width: 580px;
+    }
+    &__view {
+        position: relative;
+        width: 580px;
+    }
+    &__item {
+        margin-top:40px;
+        &:first-child {
+            margin-top:0;
+        }
+    }
+    &__title {
+        font-size:19px;
+        font-weight: 700;
+    }
+    &__text {
+        margin-top:20px;
+        font-size:17px;
+        word-break: keep-all;
+    }
+    &__list {
+        margin-top:20px;
+        li {
+            margin-top:12px;
+            padding-left:20px;
+            background: url('@images/common/bullet/bul_dot01.svg') no-repeat 0 10px / 4px;
+            font-size:17px;
+            word-break: keep-all;
+
+            &:first-child {
+                margin-top:0;
+            }
+        }
+    }
+    &__viewHeader {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__function {
+        display: flex;
+        align-items: center;
+        gap:16px;
+    }
+    &__copyButton {
+        display: inline-block;
+        padding-left:24px;
+        background: url('@images/common/button/btn_copy.svg') no-repeat 0 4px;
+        color:#1d1d1d;
+        font-size:17px;
+    }
+    &__sampleBox {
+        margin-top:20px;
+
+        & + .source__viewHeader {
+            margin-top:32px;
+        }
+    }
+    &__dropdown {
+        margin-top:4px;
+        &::v-deep(.p-dropdown-trigger) {
+            width: auto;
+        }
+    }
+    &__viewSample {
+        position: sticky;
+        top:174px;
+    }
+}

@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+
+.contentList {
+    display: flex;
+    flex-wrap: wrap;
+    gap:24px;
+    margin-top:24px;
+
+    &__total {
+        color: #1E2124;
+        font-size:19px;
+        font-weight: 700;
+
+        &.type01 {
+            margin-top:40px;
+        }
+        .count {
+            color:#0B50D0;
+        }
+    }
+
+    li {
+        width: 432px;
+        height: 433px;
+    }
+}

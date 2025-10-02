@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+
+.shoppingCart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__address {
+        width: 520px;
+    }
+
+    &__information {
+        width: 344px;
+    }
+    &__organize {
+        padding-bottom:16px;
+        border-bottom:1px solid #C6C6C6;
+        font-size:21px;
+        text-align: center;
+        font-weight: 700;
+    }
+    &__total {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top:16px;
+
+        dt {
+            width: 104px;
+            font-size:17px;
+        }
+        dd {
+            width: calc(100% - 104px);
+            font-size:17px;
+            text-align: right;
+        }
+    }
+    &__application {
+        margin-top:16px;
+    }
+    &__applicationButton {
+        width: 100%;
+        background-image: url('@images/common/bullet/bul_arrow05.svg');
+        background-repeat:  no-repeat;
+        background-position: right 17px top 50%;
+    }
+}

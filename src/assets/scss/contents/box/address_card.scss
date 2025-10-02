@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+// 배경 이미지 믹스인
+@mixin background-type($type) {
+    &.type#{$type} {
+        background-image: url('@images/common/adress/roadDb_ico#{$type}.png');
+    }
+}
+
+.addressCard {
+    padding:32px;
+    border-radius: 12px;
+    border:1px solid #C6C6C6;
+    background-repeat: no-repeat;
+    background-position: 50% 81px;
+    background-size:auto 107px;
+
+    // type01 ~ type22 배경 이미지 적용
+    @for $i from 1 through 22 {
+        $type: if($i < 10, '0#{$i}', '#{$i}');
+        @include background-type($type);
+    }
+
+    &__selectFunction {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__type {
+        .p-checkbox {
+            margin-right:8px;
+        }
+        .badge {
+            margin-right:4px;
+        }
+    }
+
+    &__like {
+        display: block;
+        width: 23px;
+        height: 23px;
+        background: url('@images/common/button/btn_like_off.svg') no-repeat 0 0 / 100%;
+
+        &.active {
+            background-image: url('@images/common/button/btn_like_on.svg');
+        }
+    }
+
+    &__titleBox {
+        padding-top:150px;
+    }
+
+    &__title {
+        color: #1E2124;
+        font-size:19px;
+        font-weight: 700;
+    }
+
+    &__text {
+        height: 48px;
+        margin-top:16px;
+        color: #464C53;
+        font-size: 17px;
+    }
+
+    &__update {
+        display: flex;
+        gap:8px;
+        margin-top:16px;
+        color: #1d1d1d;
+        font-size: 17px;
+        font-weight: 700;
+    }
+    &__updateDate {
+        color: #1E2124;
+        font-size: 17px;
+        font-weight: normal;
+    }
+    &__function {
+        display: flex;
+        gap:8px;
+        margin-top:24px;
+    }
+    &__download {
+        display: inline-block;
+        min-width: 87px;
+        height: 32px;
+        padding:0 26px 0 2px;
+        background: url('@images/common/button/btn_download.svg') no-repeat right 50%; 
+        color:#1d1d1d;
+        font-size:17px;
+    }
+    &__detail {
+        display: inline-block;
+        min-width: 102px;
+        height: 32px;
+        padding:0 26px 0 2px;
+        background: url('@images/common/button/btn_move.svg') no-repeat right 50%; 
+        color:#1d1d1d;
+        font-size:17px;
+    }
+}

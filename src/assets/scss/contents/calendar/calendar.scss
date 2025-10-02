@@ -1,0 +1,147 @@
+@charset "utf-8";
+
+.calendar {
+    padding:16px;
+
+    &.type01 {
+        padding:24px 0 0;
+    }
+
+    &__dataOptions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    &__checkboxGroup {
+        display: flex;
+        align-items: center;
+        gap:8px;
+    }
+    &__checkboxItem {
+        display: flex;
+        align-items: center;
+    }
+    &__periodButtons {
+        display: flex;
+        gap:8px;
+        padding-right:16px;
+
+        &.type01 {
+            padding:0;
+        }
+    }
+    &__actionSection {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:21px;
+        padding: 16px 24px 0;
+        border-top:1px solid #C6C6C6;
+    }
+    &__dataSize {
+        color: #1E2124;
+        font-size:15px;
+    }
+    &__actionButtons {
+        display: flex;
+        gap:8px;
+    }
+    &__selectionBox {
+        display: flex;
+        gap:16px;
+        margin-top:45px;
+    }
+    &__selectionData {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        width: calc(100% - 244px);
+        border:1px solid #D8D8D8;
+        background-color: #F8F8F8;
+        color:#325EE6;
+        font-size:19px;
+
+        .count {margin-left:16px;}
+
+        .type {
+            color:#555555;
+        }
+    }
+    &__selectionButtons {
+        display: flex;
+        gap:16px;
+        width: 244px;
+    }
+    &__dayButton {
+        &.active {
+            padding:0 10px 0 24px;
+            border-color: #256EF4;
+            background: #ECF2FE url('@images/common/bullet/bul_arrow01.svg') no-repeat 7px 8px;
+            color: #256EF4;
+        }
+    }
+}
+
+
+:deep(.vc-container) {
+	width: 100%;
+    margin-top:32px;
+	border:none;
+
+    &.multiple {
+        .vc-pane-layout {
+        background: url('@images/common/bg_calendar.png') no-repeat 50% 5px;
+        }
+    }
+	.vc-pane-layout {
+		display: flex;
+		justify-content: center;
+	}
+	.vc-pane {
+		width: 384px;
+		+ .vc-pane {
+			margin-left:177px;
+		}
+	}
+	.vc-header {
+		height: 56px;
+	}
+
+	.vc-weekday {
+        display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 44px;
+		height: 44px;
+	}
+	
+	.vc-arrow  {
+		width:32px;
+		height: 32px;
+		border:1px solid #CDD1D5;
+		border-radius: 50%;
+		color: #33363D;
+	}
+	.vc-title-wrapper {
+		font-size:19px;
+	}
+
+	.vc-day-content {
+		width: 44px;
+		height: 44px;
+		font-size: 17px;
+		&.vc-disabled {
+			color: #8A949E;
+		}
+	}
+	.is-today {
+
+		.vc-day-content {
+			border-radius: 50%;
+			background-color: #063A74;
+			color: #fff;
+		}
+	}
+
+}

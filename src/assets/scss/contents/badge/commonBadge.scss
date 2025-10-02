@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+.badge {
+    display: inline-block;
+    height: 24px;
+    padding:0 8px;
+    border-radius: 4px;
+    background-color: #ECF2FE;
+    color:#0B50D0;
+    font-size:15px;
+    line-height: 24px;
+
+    &.primary {
+        background-color: #EAF6EC;
+        color:#267337;
+    }
+    &.secondary {
+        background-color: #FFDEC5;
+        color: #9A380F   ;
+    }
+    &.tertiary {
+        background-color: #F0DFFF;
+        color: #680CDA;
+    }
+    &.quarternary {
+        background-color: #D2D5DC;
+        color:#1B2B4D;
+    }
+    &.quinary {
+        border:1px solid #8E8E8E;
+        background-color: #fff;
+        color:#555;
+    }
+    &.senary {
+        background-color: #C6C6C6;
+        color:#555;
+    }
+    &.septenary {
+
+    }
+    &.octonary {
+
+    }
+    &.nonary {
+
+    }
+}
