@@ -31,7 +31,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td><a href="/main">main</a></td>
       <td></td>
       <td>디자인</td>
     </tr>

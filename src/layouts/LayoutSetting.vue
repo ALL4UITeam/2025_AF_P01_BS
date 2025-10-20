@@ -4,11 +4,13 @@
 
   import NoneLayout from '@/layouts/NoneLayout.vue'
   import MyPageLayout from '@/layouts/MyPageLayout.vue'
+  import MainLayout from '@/layouts/MainLayout.vue'
 
   const route = useRoute();
   const layouts = {
     NoneLayout,
-    MyPageLayout
+    MyPageLayout,
+    MainLayout,
   };
 
   const layout = computed(() => {
@@ -21,6 +23,10 @@
 
     if (layout === 'mypage') {
       return layouts['MyPageLayout'];
+    }
+
+    if (layout === 'main') {
+      return layouts['MainLayout'];
     }
 
     return defineAsyncComponent(() => import('@/layouts/DefaultLayout.vue'));

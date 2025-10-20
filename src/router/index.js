@@ -89,17 +89,16 @@ const router = createRouter({
       },
     },
 
-
-
-
-
-
-
-
-
-
-
-
+    {
+      path: "/main",
+      name: '/main',
+      component: () => import('@/views/main/index.vue'),
+      meta: { 
+        layout: 'main',
+        //title: '도로명주소 안내시스템',
+        //depth2: '샘플'
+      },
+    },
     //주소정보 정책소개 Address Information Policy Introduction
     {
       path: "/policy_introduction/PolicyIntroduction",

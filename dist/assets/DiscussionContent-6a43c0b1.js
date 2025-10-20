@@ -1,0 +1,1 @@
+import{_ as s,o as c,c as e}from"./index-f510697a.js";const n={},o={class:"discussion-content"};function t(r,_){return c(),e("div",o," 토론 게시판 내용이 들어갈 영역입니다. ")}const i=s(n,[["render",t]]);export{i as default};
