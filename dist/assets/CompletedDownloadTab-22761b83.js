@@ -1,0 +1,1 @@
+import{_ as e,r as _,f as o}from"./index-ea1fe16d.js";const t={__name:"CompletedDownloadTab",setup(a){return _([]),o(()=>{}),(c,n)=>" 다운로드완료 "}},d=e(t,[["__scopeId","data-v-6c91cee0"]]);export{d as default};

@@ -1,18 +1,41 @@
 <script setup>
-	import { ref, onMounted, computed, watch  } from 'vue'
+	import { ref, onMounted, computed, watch, defineAsyncComponent  } from 'vue'
     import Button from 'primevue/button'
     import Checkbox from 'primevue/checkbox'
     import RadioButton from 'primevue/radiobutton'
 
+	import CommonTab from '@/components/common/tab/CommonTab.vue'
 	import HeaderTitle from '@/components/common/title/HeaderTitle.vue'
 	import SubHeaderTitle from '@/components/common/title/SubHeaderTitle.vue'
 	import SearchResultHeader from '@/components/common/search_result/SearchResultHeader.vue'
 	import AddressCard from '@/components/common/box/AddressCard.vue'
+	import AddressBasket from '@/components/common/box/AddressBasket.vue'
 	import CustomPaginator from '@/components/common/paginator/CustomPaginator.vue'
 	import BasicCalendar from '@/components/common/calendar/BasicCalendar.vue'
+	import LoadingBar from '@/components/common/etc/LoadingBar.vue'
 	// import MonthCalendar from '@/components/common/calendar/MonthCalendar.vue'
 
-    
+	const dataCateList = ref([
+		{
+			id: 'road_kor',
+			title: '도로명주소 한글',
+			badges: [
+				{ text: 'TXT', type: '' },
+			],
+			description: '도로명주소한글DB는 도로명주소 기준의 DB입니다.',
+			href: '#',
+			
+		},
+		{
+			id: 'road_eng',
+			title: '도로명주소 영문',
+			badges: [
+				{ text: 'TXT', type: '' },
+			],
+			description: '도로명주소 영문 표기로 제공되는 데이터입니다.',
+			href: '#'
+		}
+	])
 
 	const sampleData = ref([
 		{
@@ -51,12 +74,14 @@
 		}
 	])
 
-	// 체크박스 데이터
-	const dataDivisionOptions = ref([
-		{ label: '전체', value: 'all' },
-		{ label: '공개하는 주소', value: 'public' },
-		{ label: '제공하는 주소', value: 'provided' }
-	])
+	// 데이터 종류 옵션 (원하는 라벨/값으로 교체)
+	const dataKindOptions = [
+	{ value: 'public',   label: '공개하는 주소' },
+	{ value: 'provided', label: '제공하는 주소' },
+	]
+	// 선택된 데이터 종류
+	const selectedDataKind = ref(dataKindOptions[0].value)
+	const selectDataKind = (value) => { selectedDataKind.value = value }
 
 	const dataTypeOptions = ref([
 		{ label: '전체', value: 'all' },
@@ -94,6 +119,7 @@
 	const selectedCategories = ref([])
 	const selectedAddress = ref('')
 
+	const badgeText = (badges = []) => badges.map(b => b.text).join(' · ')
 	// 이벤트 핸들러들
 	const handleDownload = (itemId) => {
 		console.log('다운로드:', itemId)
@@ -110,7 +136,43 @@
 		alert(`좋아요: ${itemId}`)
 	}
 	
+	// 즐겨찾기
+	const favorites = ref(new Set(JSON.parse(localStorage.getItem('favs') || '[]')))
 
+	const isFav = (id) => favorites.value.has(id)
+	const toggleFav = (id) => {
+		const s = favorites.value
+		s.has(id) ? s.delete(id) : s.add(id)
+		localStorage.setItem('favs', JSON.stringify([...s]))
+	}
+
+	// 장바구니
+	const open = ref(true)
+	const items = ref([
+		{ id: 1, title: '도로명주소 건물 도형', whole: ['2025.03', '2025.02'], change: '2025.04' },
+		{ id: 2, title: '도로명주소 건물 도형', whole: ['2025.03', '2025.02'], change: '2025.04' },
+		{ id: 3, title: '도로명주소 건물 도형', whole: ['2025.03', '2025.02'], change: '2025.04' },
+		{ id: 4, title: '도로명주소 건물 도형', whole: ['2025.03', '2025.02'], change: '2025.04' },
+	])
+
+	function handleApply(selected) {
+		console.log('apply:', selected)
+	}
+
+	const tabConfig = [
+		{
+			header: '주소정보 다운로드',
+			component: defineAsyncComponent(() => import('@/components/content/tab/addressInformation/AddressDownloadTab.vue'))
+		},
+		{
+			header: '데이터 구성',
+			component: defineAsyncComponent(() => import('@/components/content/tab/addressInformation/DataOrganization.vue'))
+		},
+		{
+			header: '스키마 구성',
+			component: defineAsyncComponent(() => import('@/components/content/tab/addressInformation/DiscussionContent.vue'))
+		}
+	]
 </script>
 
 <template>
@@ -118,79 +180,68 @@
 	<div class="addressDownload__header">
 		<SubHeaderTitle title="주소정보 상세검색" />
 		<div class="addressDownload__more">
-			<span class="addressDownload__moreTip">데이터 상세검색이 필요하신가요?</span> 
-			<a href="#" class="addressDownload__link"  title="큐레이션으로 보기">상세검색 바로가기</a>
+			<span class="addressDownload__moreTip">데이터 상세검색이 필요하신가요?</span>
+			<a href="#" class="addressDownload__link" title="큐레이션으로 보기">상세검색 바로가기</a>
 		</div>
 	</div>
-
+	<div class="addressInformationType__filter">
+		<div class="addressInformationType__desc">다운로드하려는 <strong>데이터 종류</strong>를 먼저 선택하세요.</div>
+		<div class="addressInformationType__content" role="radiogroup" aria-label="데이터 종류 선택">
+			<button v-for="opt in dataKindOptions" :key="opt.value" type="button" class="data-kind__btn" :class="[
+				{ 'is-active': selectedDataKind === opt.value },`${opt.value}`]" :aria-pressed="selectedDataKind === opt.value" @click="selectDataKind(opt.value)">
+				<span class="data-kind__icon" aria-hidden="true"></span>
+				<span class="data-kind__label">{{ opt.label }}</span>
+			</button>
+		</div>
+	</div>
 	<div class="addressInformationDetails__filter">
 		<div class="addressInformationDetails__category type01">
-			
-			<div class="addressInformationDetails__header">데이터 구분</div>
-			<div class="addressInformationDetails__content">
-				<ul class="addressInformationDetails__categoryList">
-					<li v-for="option in dataDivisionOptions" :key="option.value">
-						<Checkbox
-							class="small"
-							v-model="selectedDataDivision"
-							:value="option.value"
-							:inputId="'dataDivision_' + option.value"
-						/>
-						<label :for="'dataDivision_' + option.value">{{ option.label }}</label>
-					</li>
-				</ul>
-			</div>
-
-		</div>
-		<div class="addressInformationDetails__category type02">
 			<div class="addressInformationDetails__header">데이터 유형</div>
 			<div class="addressInformationDetails__content">
 				<ul class="addressInformationDetails__categoryList">
 					<li v-for="option in dataTypeOptions" :key="option.value">
-						<Checkbox
-							class="small"
-							v-model="selectedDataType"
-							:value="option.value"
-							:inputId="'dataType_' + option.value"
-						/>
+						<Checkbox class="small" v-model="selectedDataType" :value="option.value"
+							:inputId="'dataType_' + option.value" />
 						<label :for="'dataType_' + option.value">{{ option.label }}</label>
 					</li>
 				</ul>
 			</div>
 		</div>
+
+		<div class="addressInformationDetails__category type02">
+			<div class="addressInformationDetails__header">데이터 구분</div>
+			<div class="addressInformationDetails__content">
+				<ul class="addressInformationDetails__categoryView">
+					<li v-for="item in dataCateList" :key="item.id">
+						<div class="cate-item" :aria-label="item.title">
+							<div class="cate-item__con">
+								<div class="cate-item__titleRow">
+									<button class="cate-item__star" :class="{ 'is-active': isFav(item.id) }"
+										:aria-pressed="isFav(item.id)" :title="isFav(item.id) ? '즐겨찾기 해제' : '즐겨찾기 추가'"
+										type="button" @click="toggleFav(item.id)">
+									</button>
+									<strong class="title">{{ item.title }}</strong>
+									<span v-for="(badge, index) in item.badges.slice(0, 1)"
+										:key="`${item.id}-${badge.text}-${index}`"
+										:class="['badge', badge.type || 'default']">
+										{{ badge.text }}
+									</span>
+								</div>
+								<p class="cate-item__desc">{{ item.description }}</p>
+							</div>
+
+							<div class="cate-item__cta">
+								<button type="button" class="ctaText" :aria-label="`${item.title} – 자세히 보기`"
+									@click="onCta(item)">
+									자세히 보기
+								</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 		<div class="addressInformationDetails__category type03">
-			<div class="addressInformationDetails__header">카테고리</div>
-			<div class="addressInformationDetails__content">
-				<ul class="addressInformationDetails__categoryList">
-					<li v-for="option in categoryOptions" :key="option.value">
-						<Checkbox
-							class="small"
-							v-model="selectedCategories"
-							:value="option.value"
-							:inputId="'category_' + option.value"
-						/>
-						<label :for="'category_' + option.value">{{ option.label }}</label>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="addressInformationDetails__category type04">
-			<div class="addressInformationDetails__header">선택한 주소 데이터</div>
-			<div class="addressInformationDetails__content">
-				<ul class="addressInformationDetails__categoryList">
-					<li v-for="option in selectedAddressOptions" :key="option.value">
-						<RadioButton
-							class="small"
-							v-model="selectedAddress"
-							:value="option.value"
-							:inputId="'selectedAddress_' + option.value"
-						/>
-						<label :for="'selectedAddress_' + option.value">{{ option.label }}</label>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="addressInformationDetails__category type05">
 			<div class="addressInformationDetails__header">날짜 선택</div>
 			<div class="addressInformationDetails__calendar">
 				<BasicCalendar />
@@ -199,37 +250,31 @@
 		</div>
 	</div>
 
-	<SearchResultHeader 
-		:publicAddressCount="50" 
-		:providedAddressCount="30" 
-		resultType="both" 
-		:sortTypes="[
-			{ label: '관련도순', value: 'relevance' },
-			{ label: '최신순', value: 'latest' }
-		]"
+
+	<div class="addressInformationDetails__viweTi">
+		<h3>도로명이 부여된 도로 도형</h3>
+		<div class="btn-inner">
+			<button>데이터 연계신청</button>
+			<button>서비스 체험하기</button>	
+		</div>
+	</div>
+	<CommonTab :tabs="tabConfig" />
+
+	
+	<AddressBasket
+		v-model="open"
+		:items="items"
+		title="제공하는 주소 장바구니"
+		@update:items="items = $event"
+		@apply="handleApply"
 	/>
 
-	<ul class="addressDownload__list">
-		<li v-for="item in sampleData" :key="item.id">
-			<AddressCard
-				:show-checkbox="false"
-				:background="item.background"
-				:badges="item.badges"
-				:title="item.title"
-				:description="item.description"
-				:update-date="item.updateDate"
-				@download="() => handleDownload(item.id)"
-				@detail="() => handleDetail(item.id)"
-				@like="() => handleLike(item.id)"
-			/>
-		</li>
-	</ul>
-    <CustomPaginator 
-        :rows="10" 
-        :totalRecords="100" 
-        :pageLinkSize="8"
-    />
+
+	<!-- <LoadingBar label="처리 중" />
+	<LoadingBar :progress="42" label="업로드 중" /> -->
 </template>
+
+
 
 <style lang="scss" scoped>
 	@use '@/assets/scss/contents/box/box';
@@ -237,4 +282,5 @@
 	@use '@/assets/scss/contents/page/addressInformationDetails';
     @use '@/assets/scss/contents/input/input_checkbox';
     @use '@/assets/scss/contents/input/input_radio';
+	@use '@/assets/scss/contents/badge/commonBadge';
 </style>

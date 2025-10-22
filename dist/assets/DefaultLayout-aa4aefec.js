@@ -1,0 +1,1 @@
+import{o as t,c as o,b as e,a7 as s,a as c,a8 as r,N as n,a9 as l}from"./index-ea1fe16d.js";const d={class:"layout"},u={class:"content",id:"content"},i={__name:"DefaultLayout",setup(_){return(a,m)=>(t(),o("div",d,[e(s),c("div",u,[e(r),n(a.$slots,"default")]),e(l)]))}};export{i as default};

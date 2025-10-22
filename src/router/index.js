@@ -99,6 +99,16 @@ const router = createRouter({
         //depth2: '샘플'
       },
     },
+    {
+      path: "/Error",
+      name: '/Error',
+      component: () => import('@/views/common/Error.vue'),
+      meta: { 
+        layout: 'main',
+        //title: '도로명주소 안내시스템',
+        //depth2: '샘플'
+      },
+    },
     //주소정보 정책소개 Address Information Policy Introduction
     {
       path: "/policy_introduction/PolicyIntroduction",
@@ -135,7 +145,8 @@ const router = createRouter({
         layout: 'DefaultLayout',
         title: '다운로드 상세',
         depth3: '주소정보 다운로드',
-        depth2: '주소정보 자료제공'
+        depth2: '주소정보 자료제공',
+        hideDetailButtons: true
       },
     },
     {

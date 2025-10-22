@@ -113,8 +113,13 @@
         :pageLinkSize="8"
         @page="handlePageChange"
     />
+	<div class="empty-wrap">
+		<img src="@/assets/images/etc/thumb_small_404.png" alt="즐겨찾기가 현재 비어있습니다.">
+		<p>나의 즐겨찾기가 현재 비어있습니다.</p>
+	</div>
 </template>
 
 <style lang="scss" scoped>
 	@use '@/assets/scss/contents/list/card_list';
+	@use '@/assets/scss/contents/list/Error';
 </style>

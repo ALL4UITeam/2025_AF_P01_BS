@@ -63,8 +63,8 @@ const handleFileUpload = async (event) => {
             <label for="radio01">
                 <span>데이터</span>
             </label>
-            <div class="thumbnailList__imageBox">
-                <img src="" alt="데이터 이미지" />
+            <div class="thumbnailList__imageBox thumb-data_box">
+                <img src="@/assets/images/common/thumb/thumb_data.png" alt="데이터 이미지" />
             </div>
         </li>
         <li>
@@ -72,8 +72,8 @@ const handleFileUpload = async (event) => {
             <label for="radio02">
                 <span>API</span>
             </label>
-            <div class="thumbnailList__imageBox">
-                <img src="" alt="API 이미지" />
+            <div class="thumbnailList__imageBox thumb-api_box">
+                <img src="@/assets/images/common/thumb/thumb_api.png" alt="API 이미지" />
             </div>
         </li>
         <li>
@@ -81,8 +81,8 @@ const handleFileUpload = async (event) => {
             <label for="radio03">
                 <span>체험하기</span>
             </label>
-            <div class="thumbnailList__imageBox">
-                <img src="" alt="체험하기 이미지" />
+            <div class="thumbnailList__imageBox thumb-experience_box">
+                <img src="@/assets/images/common/thumb/thumb_experience.png" alt="체험하기 이미지" />
             </div>
         </li>
         <li>
@@ -90,22 +90,21 @@ const handleFileUpload = async (event) => {
             <label for="radio04">
                 <span>주소 검색 솔루션</span>
             </label>
-            <div class="thumbnailList__imageBox"><img src="" alt="주소 검색 솔루션 이미지" /></div>
+            <div class="thumbnailList__imageBox thumb-solution_box"><img src="@/assets/images/common/thumb/thumb_solution.png" alt="주소 검색 솔루션 이미지" /></div>
         </li>
         <li>
             <RadioButton :value="'connect'" :modelValue="modelValue" @change="updateValue('connect')" inputId="radio05" />
             <label for="radio05">
                 <span>연계신청</span>
             </label>
-            <div class="thumbnailList__imageBox"><img src="" alt="연계신청 이미지" /></div>
+            <div class="thumbnailList__imageBox thumb-connect_box"><img src="@/assets/images/common/thumb/thumb_connect.png" alt="연계신청 이미지" /></div>
         </li>
         <li>
             <RadioButton :value="'upload'" :modelValue="modelValue" @change="updateValue('upload')" inputId="radio06" />
             <label for="radio06">
                 <span>이미지 업로드</span>
             </label>
-            <div class="thumbnailList__imageBox">
-                <img src="" alt="연계신청 이미지" />
+            <div class="thumbnailList__imageBox thumb-upload_box">
                 <input
                     type="file"
                     ref="fileInput"
@@ -134,11 +133,17 @@ const handleFileUpload = async (event) => {
     
     &__imageBox {
         position: relative;
-        width: 172px;
-        height: 172px;
+        width: 176px;
+        height: 130px;
         margin-top:12px;
         background: #EEF1F6;
-
+        border-radius: 12px;
+        img{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
         button {
             position: absolute;
             top:50%;
@@ -146,6 +151,26 @@ const handleFileUpload = async (event) => {
             transform: translate3d(-50%,-50%,0);
             border-radius: 4px;
             cursor: pointer;
+        }
+    }
+    .thumb{
+        &-data_box{
+            background: #B3D2FF;
+        }
+        &-api_box{
+            background: #3272C7;
+        }
+        &-experience_box{
+            background: #102A28;
+        }
+        &-solution_box{
+            background: #FFE4CC;
+        }
+        &-connect_box{
+            background: #88A6C0;
+        }
+        &-upload_box{
+            background: #EEF1F6;
         }
     }
 }

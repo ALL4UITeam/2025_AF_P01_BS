@@ -1,15 +1,66 @@
 @charset "utf-8";
-
+.addressInformationType{
+    &__filter{
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #0B50D0;
+        padding: 16px 32px;
+        border-radius: 12px;
+        background: #EEF2F7;
+    }
+    &__desc{
+        font-size: 17px;
+        color:#1D1D1D;
+    }
+    &__content{
+        display: flex;
+        align-items: center;
+        gap:16px;
+        .data-kind__btn{
+            width: 368px;
+            height: 45px;   
+            border-radius: 999px;
+            background-color: #fff;
+            font-size: 19px;
+            color:#555555;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap:8px;
+            .data-kind__icon{
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            &.public{
+                .data-kind__icon{
+                    background-image: url('@images/common/icon/icon_Public.svg');
+                }
+            }
+            &.provided{
+                .data-kind__icon{
+                    background-image: url('@images/common/icon/icon_Provision.svg');
+                }
+            }
+            &.is-active{
+                background-color: #325EE6;
+                color:#fff;
+            }
+        }
+    }
+}
 
 .addressInformationDetails {
-    
-
     &__filter {
         display: flex;
         gap:12px;
-        margin-top:24px;
+        margin-top:16px;
     }
-
     &__category {
         overflow:hidden; 
         height: 650px;
@@ -17,19 +68,13 @@
         border:1px solid #C6C6C6;
 
         &.type01 {
-            width:176px;
-        }
-        &.type02 {
             width:140px;
         }
+        &.type02 {
+            flex:1;
+        }
         &.type03 {
-            width:217px;
-        }
-        &.type04 {
-            width:202px;
-        }
-        &.type05 {
-            width:416px;
+            width:476px;
         }
     }
     &__header{
@@ -56,5 +101,97 @@
     &__calendar {
         height: 100%;
         padding:16px;
+    }
+    &__categoryView{
+        display: grid;
+        gap: 8px;
+        .cate-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px;
+            background: #F8F8F8;
+            border: 1px solid #D8D8D8;
+            border-radius: 10px;
+            color: inherit;
+            text-decoration: none;
+            transition: all .2s;
+            &:hover {
+                background: rgba(11,80,208,.2);
+                border-color: rgba(11,80,208,1);
+            }
+            &__titleRow{
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                .title {
+                    font-weight: 700;
+                    font-size: 18px;
+                    color: #111827;
+                }
+            }
+            &__star {
+                width: 20px;
+                height: 19px;
+                background: url('@images/common/icon/ico_star_line.svg') no-repeat 100%;
+                background-size: contain;
+                &.is-active{
+                    background: url('@images/common/icon/ico_star.svg') no-repeat 100%;
+                }
+            }
+            &__desc {
+                margin-left: 30px;
+                margin-top: 6px;
+                font-size: 15px;
+                color: #7E7E7E;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            &__cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                button{
+                    font-size: 15px;
+                    color: #626262;
+                    border-bottom: 1px solid #626262;
+                    transition: all .2s ;
+                }
+                &:hover {
+                    button{
+                        color:#0B50D0;
+                        border-bottom: 1px solid #0B50D0;
+                    }
+                }
+            }
+        }        
+    }
+}
+
+.addressInformationDetails{
+    &__viweTi{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 80px;
+        h3{
+            font-size: 32px;
+        }
+        .btn-inner{
+            display: flex;
+            gap:8px;
+            button{
+                display: inline-block;
+                width: 210px;
+                padding: 10px 10px 10px 24px;
+                font-weight: 500;
+                color: #325EE6;
+                text-align: left;
+                border: 1px solid #D8D8D8;
+                border-radius: 6px;
+                background: #F8F8F8 url('@images/common/icon/icon_blue_arrow.svg') no-repeat 90%;
+            }
+        }
     }
 }

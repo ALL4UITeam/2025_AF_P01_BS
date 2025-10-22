@@ -1,6 +1,6 @@
 <script setup>
 	import { ref, onMounted, computed } from 'vue'
-	
+	import { useRoute } from 'vue-router'
     import DataTable from 'primevue/datatable'
     import Column from 'primevue/column';
     import Button from 'primevue/button'
@@ -40,6 +40,7 @@
 		// 목록으로 이동
 	}
 
+    const route = useRoute()   
 </script>
 
 <template>
@@ -63,6 +64,7 @@
 		</DataTable>
     </div>
     <DetailBottomButtons
+        v-if="!route.meta.hideDetailButtons"
         type="left"
         :leftButtons="[
             { text: '목록으로', onClick: handleList, class: 'tertiary' }

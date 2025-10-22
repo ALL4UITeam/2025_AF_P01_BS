@@ -1,5 +1,6 @@
 <script setup>
     import { ref, onMounted, watch } from 'vue'
+    import { useRoute } from 'vue-router'
     import Button from 'primevue/button'
 	import DetailBottomButtons from '@/components/common/button/DetailBottomButtons.vue'
 	import MultipleCalendar from '@/components/common/calendar/MultipleCalendar.vue'
@@ -8,6 +9,8 @@
 	const handleList = () => {
 		// 목록으로 이동
 	}
+
+    const route = useRoute()      
 
 </script>
 
@@ -47,6 +50,7 @@
 		<MultipleCalendar />
     </div>
     <DetailBottomButtons
+        v-if="!route.meta.hideDetailButtons"
         type="left"
         :leftButtons="[
             { text: '목록으로', onClick: handleList, class: 'tertiary' }

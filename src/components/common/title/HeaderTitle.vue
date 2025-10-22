@@ -27,6 +27,7 @@
 <template>
 <component :is="tag" class="headerTitle" :class="{ mypage }" :style="titleStyle">
     {{title}}
+  
 </component>
 </template>
 
