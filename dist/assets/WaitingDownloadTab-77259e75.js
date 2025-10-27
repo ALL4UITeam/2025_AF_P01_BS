@@ -1,0 +1,1 @@
+/* empty css                                                                            */import{_,r as a,f as o}from"./index-a8748d3e.js";const t={__name:"WaitingDownloadTab",setup(e){return a([]),o(()=>{}),(n,s)=>" 다운로드대기 "}},i=_(t,[["__scopeId","data-v-972b141c"]]);export{i as default};
